@@ -1,0 +1,426 @@
+ :root {
+            --primary-text: #111827;
+            --secondary-text: #6b7280;
+            --bg-light: #f9fafb;
+            --card-bg: #f3f4f6;
+            --white: #ffffff;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-main);
+            background-color: var(--white);
+            color: var(--primary-text);
+            overflow-x: hidden;
+        }
+
+        /* --- DECORATIVE BACKGROUND (Purple Blur) --- */
+        .bg-gradient {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 600px;
+            background: radial-gradient(circle at 50% 50%, rgba(200, 190, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        /* --- NAVIGATION (The Floating Pill) --- */
+        .nav-wrapper {
+            position: fixed;
+            top: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 5px;
+            border-radius: 50px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 5px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: var(--secondary-text);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: block;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            background-color: var(--white);
+            color: var(--primary-text);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- HERO SECTION --- */
+        #home {
+            text-align: center;
+            padding-top: 150px;
+            padding-bottom: 100px;
+        }
+
+        .avatar-frame {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 20px;
+            overflow: hidden;
+        }
+
+        .avatar-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text {
+            font-size: 1.25rem;
+            color: var(--secondary-text);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .hero-text strong {
+            color: var(--primary-text);
+            font-style: italic;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            color: var(--primary-text);
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        .icon-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-image {
+            width: 100%;
+            max-width: 400px;
+            height: 500px;
+            /* Adjust based on your photo aspect ratio */
+            background-color: #ddd;
+            /* Placeholder color */
+            margin: 0 auto 30px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-text {
+            text-align: center;
+            color: var(--secondary-text);
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- PROJECTS SECTION --- */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 60px;
+            background: var(--white);
+            /* Could keep transparent or add card bg */
+        }
+
+        @media (min-width: 768px) {
+            .project-card {
+                flex-direction: row;
+                align-items: center;
+                gap: 40px;
+            }
+
+            /* Alternating layout */
+            .project-card:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+        }
+
+        .project-info {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .project-visual {
+            flex: 1;
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .project-visual img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .project-desc {
+            color: var(--secondary-text);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #374151;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* --- SKILLS SECTION --- */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skill-pill {
+            background: var(--white);
+            border: 1px solid #e5e7eb;
+            padding: 10px 24px;
+            border-radius: 12px;
+            font-weight: 500;
+            font-size: 1rem;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- EXPERIENCE SECTION (Vertical Timeline) --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 20px;
+        }
+
+        /* The vertical line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            /* Adjust based on icon size */
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e5e7eb;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 50px;
+            /* Space for the icon */
+            margin-bottom: 40px;
+        }
+
+        /* The Icon on the line */
+        .timeline-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            border: 1px solid #e5e7eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            font-size: 1.2rem;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            /* Light gray box like in screenshot */
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .role-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0 0 5px 0;
+        }
+
+        .company-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .timeline-desc {
+            color: var(--secondary-text);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #9ca3af;
+            font-size: 0.8rem;
+        }
+
+        /* Dark Mode Toggle (Visual Only) */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+    
+
+
+        /* --- Base (Day Mode) Styling --- */
+body {
+    background-color: #ffffff; /* White background */
+    color: #1f2937;           /* Dark text */
+    transition: all 0.5s ease; /* Smooth transition when switching modes */
+}
+
+/* Base styles for the toggle button */
+.theme-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    /* ... other existing styles ... */
+    cursor: pointer;
+}
+
+/* --- Night Mode Styling --- */
+body.dark-mode {
+    background-color: #1f2937; /* Dark background */
+    color: #f3f4f6;           /* Light text */
+}
+
+/* Example: Styling the floating toggle button in dark mode */
+body.dark-mode .theme-toggle {
+    background: #374151; /* Darker background for the button */
+    color: #f3f4f6;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Example: Styling the navbar in dark mode */
+.navbar {
+    background: rgba(255, 255, 255, 0.85); /* Light navbar for day mode */
+}
+body.dark-mode .navbar {
+    background: rgba(31, 41, 55, 0.9); /* Dark navbar for night mode */
+    box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1);
+}
